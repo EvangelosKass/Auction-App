@@ -64,7 +64,9 @@ class App extends Component {
   		return;
   	}
   	
+  	
   	try{
+  		this.setState({statusMsg:"Placing bid please wait.."});
   		let response = await contract.methods.bid().send({from: accounts[0], value: bidAmount});
   		this.setState({statusMsg:"Bid placed successfully"});
   	}catch(error){
@@ -77,6 +79,7 @@ class App extends Component {
   	const {accounts, contract} = this.state;
   	
   	try{
+  		this.setState({statusMsg:"Withdraw in progress please wait.."});
   		let response = await contract.methods.withdraw().send({from: accounts[0]});
   		this.setState({statusMsg:"Withdraw was successfull"});
   	}catch(error){
